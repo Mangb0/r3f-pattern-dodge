@@ -1,73 +1,54 @@
-# React + TypeScript + Vite
+# 🎮 3D Pattern Dodge Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React Three Fiber를 사용한 3D 패턴 피하기 게임
 
-Currently, two official plugins are available:
+## 📖 프로젝트 소개
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+3D 공간에서 다양한 패턴의 장애물을 피하는 게임입니다. 복잡한 패턴을 읽고 타이밍에 맞춰 피하는 것이 핵심입니다.
 
-## React Compiler
+## ✨ 주요 기능
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- [ ] 3D 플레이어 컨트롤
+- [ ] 다양한 패턴의 장애물 생성 (원형, 직선, 폭발 등)
+- [ ] 패턴 예고 표시 시스템
+- [ ] 충돌 감지 시스템
+- [ ] 생존 시간 표시
+- [ ] CLEAR 조건: 모든 패턴을 피하고 끝까지 생존
+- [ ] 게임 오버/재시작 기능
 
-## Expanding the ESLint configuration
+## 🛠️ 기술 스택
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **React 19** - UI 라이브러리
+- **TypeScript** - 타입 안정성
+- **React Three Fiber (R3F)** - 3D 렌더링
+- **@react-three/drei** - R3F 유틸리티
+- **Three.js** - 3D 그래픽스 라이브러리
+- **Tailwind CSS v4** - 유틸리티 기반 CSS 프레임워크
+- **Vite** - 빠른 빌드 도구
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📦 설치 및 실행
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+# 의존성 설치
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+npm install
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+npm run dev
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 빌드
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+# 프로덕션 빌드
+
+npm run build
+
+### 조작 방법
+
+- **WASD** - 플레이어 이동
+- **마우스** - 카메라 회전/시점 조절
+- **Space** - 점프 (예정)
+
+### 게임 진행
+
+- 일정 시간 동안 다양한 패턴이 순차적으로 등장
+- 각 패턴을 피하며 생존
+- 모든 패턴을 통과하면 CLEAR
+- 장애물에 맞으면 게임 오버
