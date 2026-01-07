@@ -8,11 +8,13 @@ import Character from "./character";
 interface GameSceneProps {
   children?: ReactNode;
   backgroundColor?: string;
+  onCharacterRef?: (mesh: Mesh | null) => void;
 }
 
 export default function GameScene({
   children,
   backgroundColor = "#ffffff",
+  onCharacterRef,
 }: GameSceneProps) {
   const controlsRef = useRef<OrbitControlsType>(null);
   const characterMeshRef = useRef<Mesh | null>(null);
@@ -42,7 +44,10 @@ export default function GameScene({
       <directionalLight position={[10, 10, 5]} intensity={1} />
       <Character
         speed={6}
-        onMeshReady={(mesh) => (characterMeshRef.current = mesh)}
+        onMeshReady={(mesh) => {
+          characterMeshRef.current = mesh;
+          onCharacterRef?.(mesh);
+        }}
       />
       {children}
       <OrbitControls
